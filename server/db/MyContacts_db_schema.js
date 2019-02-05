@@ -88,6 +88,39 @@ db_MyContacts_db_schema.Contact = new mongoose.Schema({
 });
 
 
+ /**
+  * User
+  */
+db_MyContacts_db_schema.User = new mongoose.Schema({
+	mail: {
+		type: 'String'
+	},
+	name: {
+		type: 'String'
+	},
+	password: {
+		type: 'String', 
+		required : true
+	},
+	roles: [{
+		type: 'String'
+	}],
+	surname: {
+		type: 'String'
+	},
+	username: {
+		type: 'String', 
+		required : true
+	},
+	//RELATIONS
+	
+	
+	//EXTERNAL RELATIONS
+	/*
+	*/
+});
+
+
 
 // Import schema customization
 require('./MyContacts_db_customSchema.js');
@@ -97,6 +130,7 @@ var MyContacts_db_model = require('./MyContacts_db_crud.js');
 
 db_MyContacts_db.Company = MyContacts_db_model.connection.model('Company', db_MyContacts_db_schema.Company );
 db_MyContacts_db.Contact = MyContacts_db_model.connection.model('Contact', db_MyContacts_db_schema.Contact );
+db_MyContacts_db.User = MyContacts_db_model.connection.model('User', db_MyContacts_db_schema.User );
 
 module.exports = db_MyContacts_db;
 
